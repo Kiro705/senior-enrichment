@@ -36,7 +36,7 @@ if (module === require.main) {
           ~ To help compare these objects, reference each of their `id` attributes
   */
   const server = app.listen(
-    process.env.PORT || 1337,
+    process.env.PORT || 1705,
     () => {
       console.log(`--- Started HTTP Server for ${pkg.name} ---`)      
       console.log(`Listening on ${JSON.stringify(server.address())}`)

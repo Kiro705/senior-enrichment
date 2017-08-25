@@ -41,4 +41,4 @@ function sync(force=false, retries=0, maxRetries=5) {
   })
 }
 
-db.didSync = sync();
+db.didSync = sync().then(() => console.log('Database is synced'));

@@ -2,7 +2,7 @@
 var Sequelize = require('sequelize')
 var db = require('../index.js')
 
-//Creating Student table
-module.exports = db.define('student', {
+//Creating Campus table
+module.exports = db.define('campus', {
   name: Sequelize.STRING,
 })
