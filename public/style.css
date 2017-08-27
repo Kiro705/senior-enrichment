@@ -7,6 +7,10 @@ h3 {
 	margin: 0;
 }
 
+.no-padding{
+	padding: 0;
+}
+
 #navbar {
 	background-color: #b3d9ff;
 	height: 80px;
