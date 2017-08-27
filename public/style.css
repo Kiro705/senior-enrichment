@@ -1,0 +1,17 @@
+html {
+	width: 100vw;
+	height: 100vh;
+}
+
+h3 {
+	margin: 0;
+}
+
+#navbar {
+	background-color: #b3d9ff;
+	height: 80px;
+}
+
+#navtext {
+	padding: 25px 0 0 20px;
+}
