@@ -14,19 +14,34 @@ api.get('/campuses', function (req, res, next) {
     .catch(next);
 });
 
-// GET /api/campuses/:campusId
-api.get('campuses/:campusId', function (req, res, next) {
-  Campus.findById(req.params.campusId)
-    .then(campus => res.json(campus))
-    .catch(next);
-});
+// // GET /api/campuses/:campusId
+// api.get('campuses/:campusId', function (req, res, next) {
+//   Campus.findById(req.params.campusId)
+//     .then(campus => res.json(campus))
+//     .catch(next);
+// });
 
 // GET /api/students
 api.get('/students', function (req, res, next) {
   Student.findAll()
     .then(students => res.json(students))
     .catch(next);
-  console.log('hi');
+});
+
+//POST /api/students
+api.post('/students', function (req, res, next) {
+	Student.create(req.body)
+	.then(student => res.json(student))
+	.catch(next);
+})
+
+//DELETE /api/students
+api.delete('/students/:studentId', function (req, res, next) {
+  console.log('hit route');
+  const id = req.params.studentId;
+  Student.destroy({ where: { id } })
+    .then(() => res.status(204).end())
+    .catch(next);
 });
 
 module.exports = api

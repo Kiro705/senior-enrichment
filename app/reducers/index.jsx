@@ -3,13 +3,21 @@ import { combineReducers } from 'redux'
 // INITIAL STATE
 const initialState = {
 	campuses: [],
-	students: []
+	students: [],
+	newFirstName: '',
+	newLastName: '',
+	campusChoice: 1
 }
 
 // ACTION TYPES
 
 export const GET_CAMPUSES = 'GET_CAMPUSES';
 export const GET_STUDENTS = 'GET_STUDENTS';
+export const WRITE_FIRSTNAME = 'WRITE_FIRSTNAME';
+export const WRITE_LASTNAME = 'WRITE_LASTNAME';
+export const WRITE_CAMPUS_CHOICE = 'WRITE_CAMPUS_CHOICE';
+export const MAKE_STUDENT = 'MAKE_STUDENT';
+export const DELETE_STUDENT = 'DELETE_STUDENT';
 
 // REDUCER
 const rootReducer = function(state = initialState, action) {
@@ -19,6 +27,21 @@ const rootReducer = function(state = initialState, action) {
 
 	case GET_STUDENTS:
 		return Object.assign({}, state, { students: action.students });
+
+	case WRITE_FIRSTNAME:
+		return Object.assign({}, state, { newFirstName: action.firstName });
+
+	case WRITE_LASTNAME:
+		return Object.assign({}, state, { newLastName: action.lastName });
+
+	case WRITE_CAMPUS_CHOICE:
+		return Object.assign({}, state, { campusChoice: action.campus });
+
+	case MAKE_STUDENT:
+		return Object.assign({}, state, { students: state.students.concat(action.student) });
+
+	case DELETE_STUDENT:
+		return Object.assign({}, state, { students: state.students.slice(0, state.students.indexOf(action.student)).concat(state.students.slice(state.students.indexOf(action.student), state.students.length))})
 
     default: return state
   }

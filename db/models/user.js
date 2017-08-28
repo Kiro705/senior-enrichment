@@ -15,15 +15,18 @@ module.exports = db.define('student', {
   },
   email: {
 	type: Sequelize.STRING,
-	allowNull: false,
-	set() {
-      let num = Math.floor(Math.random() * 100);
-      let first = this.getDataValue('firstName');
-      let last = this.getDataValue('lastName');
-      return first.slice(0, 1) + last + num + '@space.edu';
-    }
+  allowNull: false
   }
-},{
+}, {
+  hooks: {
+    beforeValidate: (student, option) => {
+      let num = Math.floor(Math.random() * 100);
+      let first = student.firstName;
+      let last = student.lastName;
+      let email = first.slice(0, 1) + last + num + '@space.edu';
+      student.email = email
+    }
+  },
   getterMethods: {
     fullName() {
       return this.firstName + ' ' + this.lastName;

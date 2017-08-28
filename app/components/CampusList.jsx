@@ -14,7 +14,7 @@ const mapStateToProps = function(state) {
 function CampusesList(props){
   return (
     <div>
-      <ul className="list-unstyled campusList col-sm-6">
+      <ul className="list-unstyled campusList col-sm-6 col-xs-11">
           { props.campuses.map(campus => {
             return (
               <NavLink to={`/campuses/${campus.id}`} key={campus.id}>
@@ -32,16 +32,16 @@ function CampusesList(props){
             })
           }
       </ul>
-      <div className="enrollBox col-sm-4">
+      <div className="enrollBox col-sm-4 col-xs-11">
         <p className="floatCenter">Welcome to the Space Academy</p>
         <p className="floatCenter">Take your education to the STARS!</p>
         <p className="floatCenter">Enroll Today</p>
-        <button className="enrollButton">ENROLL</button>
+        <NavLink to="/enroll"> <div className="enrollDiv"><button className="enrollButton">ENROLL</button> </div> </NavLink>
       </div>
     </div>
   );
 }
 
-const CampusListContainer = withRouter(connect(mapStateToProps)(CampusesList));
+const CampusListContainer = connect(mapStateToProps)(CampusesList);
 
 export default CampusListContainer;

@@ -12,5 +12,5 @@ render(
     	<Root />
     </Router>
   </Provider>,
-  document.getElementById('main')
+  document.getElementById('theMainDIV')
 )

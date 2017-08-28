@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
-import rootReducer, { GET_CAMPUSES, GET_STUDENTS } from './reducers';
+import rootReducer, { GET_CAMPUSES, GET_STUDENTS, WRITE_FIRSTNAME, WRITE_LASTNAME, MAKE_STUDENT, WRITE_CAMPUS_CHOICE, DELETE_STUDENT } from './reducers';
 import createLogger from 'redux-logger'; // https://github.com/evgenyrodionov/redux-logger
 import thunkMiddleware from 'redux-thunk'; // https://github.com/gaearon/redux-thunk
 import axios from 'axios';
@@ -13,6 +13,31 @@ export function getCampuses (campuses) {
 
 export function getStudents (students) {
   const action = { type: GET_STUDENTS, students };
+  return action;
+}
+
+export function writeFirstName (firstName) {
+  const action = { type: WRITE_FIRSTNAME, firstName };
+  return action;
+}
+
+export function writeLastName (lastName) {
+  const action = { type: WRITE_LASTNAME, lastName };
+  return action;
+}
+
+export function writeCampusChoice (campus) {
+  const action = { type: WRITE_CAMPUS_CHOICE, campus};
+  return action;
+}
+
+function makeStudent (student) {
+  const action = {type: MAKE_STUDENT, student};
+  return action;
+}
+
+function deleteStudent (student) {
+  const action = {type: DELETE_STUDENT, student};
   return action;
 }
 
@@ -41,5 +66,31 @@ export function fetchStudents () {
       });
   }
 }
+
+export function postStudent (student, history) {
+
+  return function thunk (dispatch) {
+    return axios.post('/api/students', student)
+      .then(res => res.data)
+      .then(newStudent => {
+        const action = makeStudent(newStudent);
+        dispatch(action);
+        history.push('/campuses');
+      });
+  }
+}
+
+export function destroyStudent (studentId, history) {
+
+  return function thunk (dispatch) {
+    return axios.delete(`/api/students/${studentId}`)
+      .then(res => res.data)
+      .then(targetStudent => {
+        const action = deleteStudent(studentId);
+        dispatch(action);
+        history.push(`/campuses/${studentId}`);
+      });
+  }
+}      
 
 export default createStore(rootReducer, applyMiddleware(thunkMiddleware, createLogger()))

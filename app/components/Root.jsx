@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from './Navbar';
 import CampusList from './CampusList';
 import SingleCampus from './SingleCampus';
+import Enroll from './Enroll';
 import store, { fetchCampuses, fetchStudents } from '../store';
 
 export default class Root extends Component {
@@ -20,7 +21,8 @@ export default class Root extends Component {
 					<Switch>
 						<Route exact path="/campuses" component={CampusList} />
 						<Route path="/campuses/:campusId" component={SingleCampus} />
-					
+						<Route exact path="/enroll" component={Enroll} />
+						<Redirect to="/campuses" />
 					</Switch>
 				</main>
 			</div>
