@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
-import rootReducer, { GET_CAMPUSES } from './reducers';
+import rootReducer, { GET_CAMPUSES, GET_STUDENTS } from './reducers';
 import createLogger from 'redux-logger'; // https://github.com/evgenyrodionov/redux-logger
 import thunkMiddleware from 'redux-thunk'; // https://github.com/gaearon/redux-thunk
 import axios from 'axios';
@@ -8,6 +8,11 @@ import axios from 'axios';
 
 export function getCampuses (campuses) {
   const action = { type: GET_CAMPUSES, campuses };
+  return action;
+}
+
+export function getStudents (students) {
+  const action = { type: GET_STUDENTS, students };
   return action;
 }
 
@@ -20,6 +25,18 @@ export function fetchCampuses () {
       .then(res => res.data)
       .then(campuses => {
         const action = getCampuses(campuses);
+        dispatch(action);
+      });
+  }
+}
+
+export function fetchStudents () {
+
+  return function thunk (dispatch) {
+    return axios.get('/api/students')
+      .then(res => res.data)
+      .then(students => {
+        const action = getStudents(students);
         dispatch(action);
       });
   }

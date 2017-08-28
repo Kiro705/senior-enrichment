@@ -16,11 +16,17 @@ module.exports = db.define('student', {
   email: {
 	type: Sequelize.STRING,
 	allowNull: false,
-	get() {
+	set() {
       let num = Math.floor(Math.random() * 100);
       let first = this.getDataValue('firstName');
       let last = this.getDataValue('lastName');
-      return first.splice(0, 1) + last + num + '@space.edu';
+      return first.slice(0, 1) + last + num + '@space.edu';
+    }
+  }
+},{
+  getterMethods: {
+    fullName() {
+      return this.firstName + ' ' + this.lastName;
     }
   }
 })

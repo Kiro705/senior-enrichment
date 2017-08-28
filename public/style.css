@@ -7,8 +7,61 @@ h3 {
 	margin: 0;
 }
 
+p {
+	margin: 0;
+}
+
 .no-padding{
 	padding: 0;
+}
+
+.floatCenter {
+	text-align: center;
+}
+
+.campusList {
+	display: inline;
+	margin: 30px;
+	background-color: #b3d9ff;
+	border: solid gray 2px;
+	border-radius: 10px;
+	padding: 15px;
+}
+
+.enrollBox {
+	display: inline;
+	margin: 30px;
+	background-color: #b3d9ff;
+	border: solid gray 2px;
+	border-radius: 10px;
+	padding: 15px;
+}
+
+.campusListItem {
+	height: 77px;
+	background-color: lightgray;
+	border: solid gray 2px;
+	border-radius: 10px;
+	margin-bottom: 5px;
+}
+
+.campusImage {
+	display: inline-block;
+	margin: 5px;
+	border: solid black 2px;
+	border-radius: 8px;
+}
+
+.campusInfo {
+	display: inline-block;
+}
+
+.enrollButton {
+	margin: 20px 25%;
+	width: 150px;
+	border: solid gray 2px;
+	border-radius: 10px;
+	background-color: gold;
 }
 
 #navbar {

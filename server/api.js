@@ -21,4 +21,12 @@ api.get('campuses/:campusId', function (req, res, next) {
     .catch(next);
 });
 
+// GET /api/students
+api.get('/students', function (req, res, next) {
+  Student.findAll()
+    .then(students => res.json(students))
+    .catch(next);
+  console.log('hi');
+});
+
 module.exports = api

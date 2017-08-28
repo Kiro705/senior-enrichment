@@ -12,21 +12,33 @@ const mapStateToProps = function(state) {
 }
 
 function CampusesList(props){
-	console.log(props.campuses,'**********');
   return (
-    <ul className="list-unstyled">
-        { props.campuses.map(campus => {
-          return (
-            <li key={campus.id}>
-              <NavLink to={`/campuses/${campus.id}`} activeClassName="active">
-                <span>{campus.name}  </span>
-                <span className="badge">{ props.students.filter(student => student.campusId === campus.id).length }</span>
+    <div>
+      <ul className="list-unstyled campusList col-sm-6">
+          { props.campuses.map(campus => {
+            return (
+              <NavLink to={`/campuses/${campus.id}`} key={campus.id}>
+                <li className="campusListItem">
+                  <div className="campusImage">
+                    <img src={`${campus.imgURL}`} alt={`${campus.name} image`} height="60" width="60"></img>
+                  </div>
+                  <div className="campusInfo">
+                    <div>{campus.name} Campus</div>
+                    <div className="badge">Students Enrolled: { props.students.filter(student => student.campusId === campus.id).length }</div>
+                  </div>
+                </li>
               </NavLink>
-            </li>
-          )
-          })
-        }
-    </ul>
+            )
+            })
+          }
+      </ul>
+      <div className="enrollBox col-sm-4">
+        <p className="floatCenter">Welcome to the Space Academy</p>
+        <p className="floatCenter">Take your education to the STARS!</p>
+        <p className="floatCenter">Enroll Today</p>
+        <button className="enrollButton">ENROLL</button>
+      </div>
+    </div>
   );
 }
 
