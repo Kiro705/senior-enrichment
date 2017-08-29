@@ -26,8 +26,8 @@ function SingleCampusesList(props){
               props.students.map(student => {
                 if (student.campusId === campusId){
                   return (<li key={student.id} className="studentInList">
-                    <div className="StudentInfo">
-                      <p>Name: {student.fullName}</p>
+                    <div className="StudentInfoC">
+                      <p>Name: <NavLink to={`/students/${student.id}`}>{student.fullName}</NavLink></p>
                       <p>Email: {student.email}</p>
                     </div>
                     <button value={student.id} type="delete" onClick={props.handleDelete} name="delete_button" className="deleteStudent" >x</button>
@@ -51,12 +51,11 @@ function mapDispatchToProps (dispatch, ownProps){
   return {
     handleDelete: function(evt){
       evt.preventDefault();
-      console.log(evt.target.value)
       dispatch(destroyStudent(evt.target.value, ownProps.history))
     }
   }
 }
 
-const CampusListContainer = withRouter(connect(mapStateToProps, mapDispatchToProps)(SingleCampusesList));
+const CampusListContainer = connect(mapStateToProps, mapDispatchToProps)(SingleCampusesList);
 
 export default CampusListContainer;

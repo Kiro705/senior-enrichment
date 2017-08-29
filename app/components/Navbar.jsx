@@ -5,7 +5,9 @@ function Navbar (props) {
 	return (
 	  <nav className="col-sm-12 no-padding">
 	  	<div id="navbar" className="col-sm-12">
-	    	<NavLink to="/campuses"> <h3 id="navtext">The Space Academy</h3> </NavLink>
+	  		<NavLink className="NavItem" to="/home"> <h3 className="navtext">The Space Academy</h3> </NavLink>
+	    	<NavLink className="NavItem" to="/campuses"> <h5 className="navtext">Campuses</h5> </NavLink>
+	    	<NavLink className="NavItem" to="/students"> <h5 className="navtext">Enrolled-Students</h5> </NavLink>
 	    </div>
 	  </nav>
 	);

@@ -41,7 +41,7 @@ const rootReducer = function(state = initialState, action) {
 		return Object.assign({}, state, { students: state.students.concat(action.student) });
 
 	case DELETE_STUDENT:
-		return Object.assign({}, state, { students: state.students.slice(0, state.students.indexOf(action.student)).concat(state.students.slice(state.students.indexOf(action.student), state.students.length))})
+		return Object.assign({}, state, { students: state.students.filter(student => Number(student.id) !== Number(action.studentId))});
 
     default: return state
   }

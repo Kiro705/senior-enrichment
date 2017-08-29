@@ -36,8 +36,8 @@ function makeStudent (student) {
   return action;
 }
 
-function deleteStudent (student) {
-  const action = {type: DELETE_STUDENT, student};
+function deleteStudent (studentId) {
+  const action = {type: DELETE_STUDENT, studentId};
   return action;
 }
 
@@ -88,7 +88,7 @@ export function destroyStudent (studentId, history) {
       .then(targetStudent => {
         const action = deleteStudent(studentId);
         dispatch(action);
-        history.push(`/campuses/${studentId}`);
+        console.log(targetStudent);
       });
   }
 }      

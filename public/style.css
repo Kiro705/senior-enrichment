@@ -1,4 +1,5 @@
 html {
+	background-image: url("https://i.ytimg.com/vi/aiU22lKiZbA/maxresdefault.jpg");
 	width: 100vw;
 	height: 100vh;
 }
@@ -21,6 +22,32 @@ p {
 
 .floatCenter {
 	text-align: center;
+}
+
+.titleDIV {
+	display: inline-block;
+	margin-top: 100px;
+	background-color: black;
+	padding: 15px;
+}
+
+.title {
+	margin: 8px;
+	color: white;
+	text-align: center;
+}
+
+.buffer {
+	height: 100px;
+}
+
+.navItem {
+	display: inline-block;
+}
+
+.navtext {
+	display: inline-block;
+	padding: 25px 0 0 20px;
 }
 
 .campusList {
@@ -75,12 +102,13 @@ p {
 	margin-bottom: 10px;
 }
 
-.StudentInfo {
+.StudentInfoC {
 	display: inline-block;
 	margin-left: 15px;
 }
 
 .deleteStudent {
+	height: 25px;
 	display: inline-block;
 	background-color: #b30000;
 	margin-left: 30px;
@@ -101,13 +129,23 @@ p {
 	margin: 10px;
 }
 
+.studentInfo {
+	display: inline-block;
+	width: 80%;
+	margin: 5px 5% 5px 5%;
+	background-color: lightgray;
+	border: solid gray 2px;
+	border-radius: 10px;
+}
+
+.studentListItem{
+	display: inline-block;
+	margin: 0 10px;
+}
+
 #navbar {
 	background-color: #b3d9ff;
 	height: 80px;
-}
-
-#navtext {
-	padding: 25px 0 0 20px;
 }
 
 #submit {
