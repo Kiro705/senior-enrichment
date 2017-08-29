@@ -19,7 +19,7 @@ module.exports = db.define('student', {
   }
 }, {
   hooks: {
-    afterCreate: (student, option) => {
+    beforeCreate: (student, option) => {
       let num = Math.floor(Math.random() * 100);
       let first = student.firstName;
       let last = student.lastName;
