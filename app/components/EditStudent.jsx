@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {writeFirstName, writeLastName, writeCampusChoice, postStudent} from '../store.jsx';
+import {writeFirstName, writeLastName, writeCampusChoice, editStudent} from '../store.jsx';
 
 const mapStateToProps = function(state) {
   return {
@@ -50,7 +50,7 @@ function EditReturn(props){
             {
               props.campuses.map(campus => {
                 return (
-                  <option value={campus.id} key={campus.id} >The {campus.name} Campus</option>
+                  <option value={Number(campus.id)} key={campus.id} >The {campus.name} Campus</option>
                   )
               })
             }
@@ -62,29 +62,29 @@ function EditReturn(props){
   );
 }
 
-// function mapDispatchToProps (dispatch, ownProps){
-//   return {
-//     handleFirstName: function(evt){
-//       dispatch(writeFirstName(evt.target.value))
-//     },
-//     handleLastName: function(evt){
-//       dispatch(writeLastName(evt.target.value))
-//     },
-//     handelCampus: function(evt){
-//       dispatch(writeCampusChoice(evt.target.value))
-//     },
-//     handleSubmit: function(evt){
-//       evt.preventDefault();
-//       dispatch(postStudent({firstName: evt.target.firstName.value, lastName: evt.target.lastName.value, campusId: evt.target.campus.value}, ownProps.history))
-//       dispatch(writeFirstName(''));
-//       dispatch(writeLastName(''));
-//       dispatch(writeCampusChoice(1));
-//     }
-//   }
-// }
+function mapDispatchToProps (dispatch, ownProps){
+  return {
+    handleFirstName: function(evt){
+      dispatch(writeFirstName(evt.target.value))
+    },
+    handleLastName: function(evt){
+      dispatch(writeLastName(evt.target.value))
+    },
+    handelCampus: function(evt){
+      dispatch(writeCampusChoice(evt.target.value))
+    },
+    handleSubmit: function(evt){
+      evt.preventDefault();
+      dispatch(editStudent({id: Number(ownProps.match.params.studentId), firstName: evt.target.firstName.value, lastName: evt.target.lastName.value, campusId: Number(evt.target.campus.value)}, ownProps.history))
+      dispatch(writeFirstName(''));
+      dispatch(writeLastName(''));
+      dispatch(writeCampusChoice(1));
+    }
+  }
+}
 
 
-const EditContainer = connect(mapStateToProps)(EditReturn);
+const EditContainer = connect(mapStateToProps, mapDispatchToProps)(EditReturn);
 
 export default EditContainer;
 

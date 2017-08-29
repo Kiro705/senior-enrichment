@@ -35,9 +35,18 @@ api.post('/students', function (req, res, next) {
 	.catch(next);
 })
 
-//DELETE /api/students
-api.delete('/students/:studentId', function (req, res, next) {
+//PUT /api/students/:studentId
+api.put('/students/:studentId', function (req, res, next) {
   console.log('hit route');
+  console.log('the body', req.body);
+  Student.findById(req.params.studentId)
+    .then(student => student.update(req.body))
+    .then(response => res.json(response))
+    .catch(next);
+})
+
+//DELETE /api/students/:studentId
+api.delete('/students/:studentId', function (req, res, next) {
   const id = req.params.studentId;
   Student.destroy({ where: { id } })
     .then(() => res.status(204).end())

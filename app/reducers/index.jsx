@@ -18,6 +18,7 @@ export const WRITE_LASTNAME = 'WRITE_LASTNAME';
 export const WRITE_CAMPUS_CHOICE = 'WRITE_CAMPUS_CHOICE';
 export const MAKE_STUDENT = 'MAKE_STUDENT';
 export const DELETE_STUDENT = 'DELETE_STUDENT';
+export const EDIT_STUDENT = 'EDIT_STUDENT'
 
 // REDUCER
 const rootReducer = function(state = initialState, action) {
@@ -42,6 +43,10 @@ const rootReducer = function(state = initialState, action) {
 
 	case DELETE_STUDENT:
 		return Object.assign({}, state, { students: state.students.filter(student => Number(student.id) !== Number(action.studentId))});
+
+	case EDIT_STUDENT:
+		console.log('reducer hit');
+		return Object.assign({}, state, { students: state.students.filter(student => Number(student.id) !== Number(action.student.id)).concat(action.student)});
 
     default: return state
   }

@@ -48,7 +48,7 @@ function EnrollReturn(props){
             {
               props.campuses.map(campus => {
                 return (
-                  <option value={campus.id} key={campus.id} >The {campus.name} Campus</option>
+                  <option value={Number(campus.id)} key={campus.id} >The {campus.name} Campus</option>
                   )
               })
             }

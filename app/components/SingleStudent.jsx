@@ -13,7 +13,8 @@ const mapStateToProps = function(state) {
 function StudentsList(props){
   const studentId = Number(props.match.params.studentId);
   const student = props.students.filter(oneStudent => oneStudent.id === studentId)[0];
-  if (student){
+  console.log('the campuses', props.campuses)
+  if (student && props.campuses[0]){
     return (
     <div>
       <ul className="list-unstyled campusList col-sm-6 col-xs-11">

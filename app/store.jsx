@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
-import rootReducer, { GET_CAMPUSES, GET_STUDENTS, WRITE_FIRSTNAME, WRITE_LASTNAME, MAKE_STUDENT, WRITE_CAMPUS_CHOICE, DELETE_STUDENT } from './reducers';
+import rootReducer, { GET_CAMPUSES, GET_STUDENTS, WRITE_FIRSTNAME, WRITE_LASTNAME, MAKE_STUDENT, WRITE_CAMPUS_CHOICE, DELETE_STUDENT, EDIT_STUDENT } from './reducers';
 import createLogger from 'redux-logger'; // https://github.com/evgenyrodionov/redux-logger
 import thunkMiddleware from 'redux-thunk'; // https://github.com/gaearon/redux-thunk
 import axios from 'axios';
@@ -38,6 +38,11 @@ function makeStudent (student) {
 
 function deleteStudent (studentId) {
   const action = {type: DELETE_STUDENT, studentId};
+  return action;
+}
+
+function editStudentAction (student) {
+  const action = {type: EDIT_STUDENT, student};
   return action;
 }
 
@@ -80,7 +85,7 @@ export function postStudent (student, history) {
   }
 }
 
-export function destroyStudent (studentId, history) {
+export function destroyStudent (studentId) {
 
   return function thunk (dispatch) {
     return axios.delete(`/api/students/${studentId}`)
@@ -88,9 +93,20 @@ export function destroyStudent (studentId, history) {
       .then(targetStudent => {
         const action = deleteStudent(studentId);
         dispatch(action);
-        console.log(targetStudent);
       });
   }
-}      
+}
+
+export function editStudent (student, history) {
+  return function thunk (dispatch) {
+    return axios.put(`/api/students/${student.id}`, student)
+      .then(res => res.data)
+      .then(targetStudent => {
+        const action = editStudentAction(targetStudent);
+        dispatch(action);
+        history.push(`/students/${targetStudent.id}`);
+      });
+  }
+}     
 
 export default createStore(rootReducer, applyMiddleware(thunkMiddleware, createLogger()))
