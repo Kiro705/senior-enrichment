@@ -37,7 +37,6 @@ api.get('/students', function (req, res, next) {
 
 //POST /api/students
 api.post('/students', function (req, res, next) {
-  console.log('*******', req.body);
 	Student.create(req.body)
 	.then(student => res.json(student))
 	.catch(next);
@@ -45,10 +44,16 @@ api.post('/students', function (req, res, next) {
 
 //PUT /api/students/:studentId
 api.put('/students/:studentId', function (req, res, next) {
-  console.log('hit route');
-  console.log('the body', req.body);
   Student.findById(req.params.studentId)
-    .then(student => student.update(req.body))
+    .then(student => student.update(req.body, {fields: ['firstName', 'lastName', 'campusId']}))
+    .then(response => res.json(response))
+    .catch(next);
+})
+
+//PUT /api/campuses/:campusId
+api.put('/campuses/:campusId', function (req, res, next) {
+  Campus.findById(req.params.campusId)
+    .then(campus => campus.update(req.body, {fields: ['name', 'imgURL']}))
     .then(response => res.json(response))
     .catch(next);
 })
@@ -57,6 +62,14 @@ api.put('/students/:studentId', function (req, res, next) {
 api.delete('/students/:studentId', function (req, res, next) {
   const id = req.params.studentId;
   Student.destroy({ where: { id } })
+    .then(() => res.status(204).end())
+    .catch(next);
+});
+
+//DELETE /api/campuses/:campusId
+api.delete('/campuses/:campusId', function (req, res, next) {
+  const id = req.params.campusId;
+  Campus.destroy({ where: { id } })
     .then(() => res.status(204).end())
     .catch(next);
 });

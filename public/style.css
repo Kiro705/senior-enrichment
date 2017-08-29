@@ -61,7 +61,7 @@ p {
 .enrollBox {
 	display: inline-block;
 	margin: 30px;
-	background-color: #b3d9ff;
+	color: white;
 	border: solid gray 2px;
 	border-radius: 10px;
 	padding: 15px;
@@ -128,6 +128,8 @@ p {
 .fullImage {
 	width: 100%;
 	height: 100%;
+	border: solid black 2px;
+	border-radius: 8px;
 }
 
 .inputGroup {
@@ -152,6 +154,26 @@ p {
 .studentListItem{
 	display: inline-block;
 	margin: 0 10px;
+}
+
+.noBtn {
+	display: inline-block;
+	background-color: green;
+	color: lightgray;
+	border-radius: 5px;
+}
+
+.yesBtn {
+	display: inline-block;
+	background-color: red;
+	color: black;
+	margin-right: 30px;
+	border-radius: 5px;
+}
+
+.deleteTag {
+	display: inline-block;
+	margin-left: 10px;
 }
 
 #navbar {

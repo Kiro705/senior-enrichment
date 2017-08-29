@@ -21,7 +21,9 @@ function StudentsList(props){
                 <div className="studentInfo">
                   <div className="studentListItem">|<NavLink to={`/students/${student.id}`}>{student.fullName}</NavLink>|</div>
                   <div className="studentListItem">|email: {student.email}|</div>
-                  <div className="studentListItem">|campus: <NavLink to={`/campuses/${student.campusId}`}>{props.campuses.filter(campus => campus.id === student.campusId)[0].name}</NavLink>|</div>
+                  {
+                    (student.campusId !== null) ? <div className="studentListItem">|campus: <NavLink to={`/campuses/${student.campusId}`}>{props.campuses.filter(campus => campus.id === student.campusId)[0].name}</NavLink>|</div> : <div className="studentListItem">|Homeless|</div>
+                  }
                 </div>
                 <button value={student.id} type="delete" onClick={props.handleDelete} name="delete_button" className="deleteStudent" >x</button>
               </li>
@@ -30,9 +32,9 @@ function StudentsList(props){
           }
       </ul>
       <div className="enrollBox col-sm-4 col-xs-11">
-        <p className="floatCenter">Welcome to the Space Academy</p>
-        <p className="floatCenter">Take your education to the STARS!</p>
-        <p className="floatCenter">Enroll Today</p>
+        <p className="floatCenter"><b>Welcome to the Space Academy</b></p>
+        <p className="floatCenter"><b>Take your education to the STARS!</b></p>
+        <p className="floatCenter"><b>Enroll Today</b></p>
         <NavLink to="/enroll"> <div className="enrollDiv"><button className="enrollButton">ENROLL</button> </div> </NavLink>
       </div>
     </div>

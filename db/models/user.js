@@ -15,11 +15,11 @@ module.exports = db.define('student', {
   },
   email: {
 	type: Sequelize.STRING,
-  allowNull: false
+  allowNull: true
   }
 }, {
   hooks: {
-    beforeValidate: (student, option) => {
+    afterCreate: (student, option) => {
       let num = Math.floor(Math.random() * 100);
       let first = student.firstName;
       let last = student.lastName;

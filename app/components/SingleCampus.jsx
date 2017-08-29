@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import {destroyStudent} from '../store';
 import {connect} from 'react-redux';
-import { withRouter } from 'react-router';
 
 const mapStateToProps = function(state) {
   return {
@@ -20,6 +19,8 @@ function SingleCampusesList(props){
       <div>
         <div className=" campusList col-sm-6 col-xs-11">
           <h3>The {theCampus.name} Campus</h3>
+          <div className="deleteTag"><NavLink to={`/campuses/${theCampus.id}/edit`}>Edit</NavLink></div>
+          <div className="deleteTag"><NavLink to={`/campuses/${theCampus.id}/delete`}>Delete</NavLink></div>
           <p>Enrolled Students:</p>
           <ul className="list-unstyled">
             {

@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
-import rootReducer, { GET_CAMPUSES, GET_STUDENTS, WRITE_FIRSTNAME, WRITE_LASTNAME, MAKE_STUDENT, WRITE_CAMPUS_CHOICE, DELETE_STUDENT, EDIT_STUDENT, WRITE_CAMPUS_NAME, WRITE_CAMPUS_URL, MAKE_CAMPUS } from './reducers';
+import rootReducer, { GET_CAMPUSES, GET_STUDENTS, WRITE_FIRSTNAME, WRITE_LASTNAME, MAKE_STUDENT, WRITE_CAMPUS_CHOICE, DELETE_STUDENT, EDIT_STUDENT, WRITE_CAMPUS_NAME, WRITE_CAMPUS_URL, MAKE_CAMPUS, DELETE_CAMPUS, EDIT_CAMPUS, GET_CAMPUSE_SELECTOR } from './reducers';
 import createLogger from 'redux-logger'; // https://github.com/evgenyrodionov/redux-logger
 import thunkMiddleware from 'redux-thunk'; // https://github.com/gaearon/redux-thunk
 import axios from 'axios';
@@ -13,6 +13,11 @@ export function getCampuses (campuses) {
 
 export function getStudents (students) {
   const action = { type: GET_STUDENTS, students };
+  return action;
+}
+
+export function getCampusSelector () {
+  const action = { type: GET_CAMPUSE_SELECTOR};
   return action;
 }
 
@@ -56,8 +61,18 @@ function deleteStudent (studentId) {
   return action;
 }
 
+function deleteCampus (campusId) {
+  const action = {type: DELETE_CAMPUS, campusId};
+  return action;
+}
+
 function editStudentAction (student) {
   const action = {type: EDIT_STUDENT, student};
+  return action;
+}
+
+function editCampusAction (campus) {
+  const action = {type: EDIT_CAMPUS, campus};
   return action;
 }
 
@@ -125,6 +140,19 @@ export function destroyStudent (studentId) {
   }
 }
 
+export function destroyCampus (campusId, history) {
+
+  return function thunk (dispatch) {
+    return axios.delete(`/api/campuses/${campusId}`)
+      .then(res => res.data)
+      .then(targetCampus => {
+        const action = deleteCampus(campusId);
+        dispatch(action);
+        history.push('/campuses');
+      });
+  }
+}
+
 export function editStudent (student, history) {
   return function thunk (dispatch) {
     return axios.put(`/api/students/${student.id}`, student)
@@ -135,6 +163,18 @@ export function editStudent (student, history) {
         history.push(`/students/${targetStudent.id}`);
       });
   }
-}     
+}   
+
+export function editCampus (campus, history) {
+  return function thunk (dispatch) {
+    return axios.put(`/api/campuses/${campus.id}`, campus)
+      .then(res => res.data)
+      .then(targetCampus => {
+        const action = editCampusAction(targetCampus);
+        dispatch(action);
+        history.push(`/campuses/${targetCampus.id}`);
+      });
+  }
+}  
 
 export default createStore(rootReducer, applyMiddleware(thunkMiddleware, createLogger()))
