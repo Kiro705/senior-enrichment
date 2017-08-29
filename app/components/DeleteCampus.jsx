@@ -26,7 +26,7 @@ function DeleteCampusFunc(props){
       <div>
         <div className=" campusList col-sm-6 col-xs-11">
           <h1>Are you sure you want to destroy the {theCampus.name} Campus?</h1>
-          <h4>All {studentArray.length} student{studentPlural} will become homeless.</h4>
+          {(studentArray.length > 0) ? <h4>All {studentArray.length} student{studentPlural} will become homeless.</h4> : <div /> }
           <button className="yesBtn" onClick={props.handleDelete} value={campusId} type="submit" id="yes">Yes</button>
           <NavLink to="/campuses"><button className="noBtn" type="submit" id="no">No</button></NavLink>
         </div>
