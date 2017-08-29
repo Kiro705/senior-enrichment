@@ -14,6 +14,13 @@ api.get('/campuses', function (req, res, next) {
     .catch(next);
 });
 
+//POST /api/students
+api.post('/campuses', function (req, res, next) {
+  Campus.create(req.body)
+  .then(campus => res.json(campus))
+  .catch(next);
+})
+
 // // GET /api/campuses/:campusId
 // api.get('campuses/:campusId', function (req, res, next) {
 //   Campus.findById(req.params.campusId)
@@ -30,6 +37,7 @@ api.get('/students', function (req, res, next) {
 
 //POST /api/students
 api.post('/students', function (req, res, next) {
+  console.log('*******', req.body);
 	Student.create(req.body)
 	.then(student => res.json(student))
 	.catch(next);

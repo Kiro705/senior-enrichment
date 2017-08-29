@@ -31,6 +31,11 @@ function CampusesList(props){
             )
             })
           }
+          <NavLink to={`/campuses/new`} key={'newCampus'}>
+            <li className="campusListItem newCampusBtn">
+              <h2>Found a New Campus</h2>
+            </li>
+          </NavLink>
       </ul>
       <div className="enrollBox col-sm-4 col-xs-11">
         <p className="floatCenter">Welcome to the Space Academy</p>

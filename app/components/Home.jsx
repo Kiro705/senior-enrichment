@@ -9,7 +9,7 @@ function Home(){
       <ul className="list-unstyled titleDIV col-sm-12 col-xs-12">
         <h1 className="title">WELCOME</h1>
         <h4 className="title">TO THE</h4>
-        <h1 className="title">SPACE ACADMEY</h1>
+        <h1 className="title">SPACE ACADEMY</h1>
       </ul>
     </div>
   );

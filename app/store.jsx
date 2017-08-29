@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
-import rootReducer, { GET_CAMPUSES, GET_STUDENTS, WRITE_FIRSTNAME, WRITE_LASTNAME, MAKE_STUDENT, WRITE_CAMPUS_CHOICE, DELETE_STUDENT, EDIT_STUDENT } from './reducers';
+import rootReducer, { GET_CAMPUSES, GET_STUDENTS, WRITE_FIRSTNAME, WRITE_LASTNAME, MAKE_STUDENT, WRITE_CAMPUS_CHOICE, DELETE_STUDENT, EDIT_STUDENT, WRITE_CAMPUS_NAME, WRITE_CAMPUS_URL, MAKE_CAMPUS } from './reducers';
 import createLogger from 'redux-logger'; // https://github.com/evgenyrodionov/redux-logger
 import thunkMiddleware from 'redux-thunk'; // https://github.com/gaearon/redux-thunk
 import axios from 'axios';
@@ -28,6 +28,21 @@ export function writeLastName (lastName) {
 
 export function writeCampusChoice (campus) {
   const action = { type: WRITE_CAMPUS_CHOICE, campus};
+  return action;
+}
+
+export function writeCampusName (name) {
+  const action = { type: WRITE_CAMPUS_NAME, name};
+  return action;
+}
+
+export function writeCampusURL (name) {
+  const action = { type: WRITE_CAMPUS_URL, name};
+  return action;
+}
+
+function makeCampus (campus) {
+  const action = {type: MAKE_CAMPUS, campus};
   return action;
 }
 
@@ -79,6 +94,19 @@ export function postStudent (student, history) {
       .then(res => res.data)
       .then(newStudent => {
         const action = makeStudent(newStudent);
+        dispatch(action);
+        history.push('/campuses');
+      });
+  }
+}
+
+export function postCampus (campus, history) {
+
+  return function thunk (dispatch) {
+    return axios.post('/api/campuses', campus)
+      .then(res => res.data)
+      .then(newCampus => {
+        const action = makeCampus(newCampus);
         dispatch(action);
         history.push('/campuses');
       });

@@ -24,7 +24,7 @@ function EditReturn(props){
             <h5>First Name</h5>
           </span>
           <input
-            className="inputField"
+            className="inputField inputTextBox"
             autoComplete= "off"
             type="text"
             name="firstName"
@@ -38,7 +38,7 @@ function EditReturn(props){
           </span>
           <input
             autoComplete= "off"
-            className="inputField"
+            className="inputField inputTextBox"
             defaultValue={student.lastName}
             type="text"
             name="lastName"
@@ -49,7 +49,7 @@ function EditReturn(props){
           <span>
             <h5>Campus</h5>
           </span>
-          <select name="campus" onChange={props.handelCampus}>
+          <select name="campus" className="inputTextBox" onChange={props.handelCampus}>
             {
               props.campuses.map(campus => {
                 if (campus.id === student.campusId){

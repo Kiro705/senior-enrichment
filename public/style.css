@@ -27,7 +27,6 @@ p {
 .titleDIV {
 	display: inline-block;
 	margin-top: 100px;
-	background-color: black;
 	padding: 15px;
 }
 
@@ -51,9 +50,9 @@ p {
 }
 
 .campusList {
+	color: white;
 	display: inline-block;
 	margin: 30px;
-	background-color: #b3d9ff;
 	border: solid gray 2px;
 	border-radius: 10px;
 	padding: 15px;
@@ -88,6 +87,12 @@ p {
 	display: inline-block;
 }
 
+.newCampusBtn {
+	color: white;
+	text-align: center;
+	background-image: url(https://media4.s-nbcnews.com/j/newscms/2014_16/330011/140417-coslog-kepler_f8c4ec47f1cce1f760385f2e547af202.nbcnews-fp-1240-520.jpg);
+}
+
 .enrollButton {
 	width: 100%;
 	border: solid gray 2px;
@@ -96,6 +101,7 @@ p {
 }
 
 .studentInList {
+	color: black;
 	background-color: lightgray;
 	border: solid gray 2px;
 	border-radius: 10px;
@@ -129,8 +135,13 @@ p {
 	margin: 10px;
 }
 
+.inputTextBox {
+	color: black;
+}
+
 .studentInfo {
 	display: inline-block;
+	color: black;
 	width: 80%;
 	margin: 5px 5% 5px 5%;
 	background-color: lightgray;
@@ -153,6 +164,6 @@ p {
 	width: 150px;
 	border: solid gray 2px;
 	border-radius: 10px;
-	background-color: gold;
+	background-color: #cc9900;
 }
 

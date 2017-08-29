@@ -22,7 +22,7 @@ function EnrollReturn(props){
             <h5>First Name</h5>
           </span>
           <input
-            className="inputField"
+            className="inputField inputTextBox"
             autoComplete= "off"
             type="text"
             name="firstName"
@@ -35,7 +35,7 @@ function EnrollReturn(props){
             <h5>Last Name</h5>
           </span>
           <input
-            className="inputField"
+            className="inputField inputTextBox"
             autoComplete= "off"
             type="text"
             name="lastName"
@@ -46,7 +46,7 @@ function EnrollReturn(props){
           <span>
             <h5>Campus</h5>
           </span>
-          <select name="campus" onChange={props.handelCampus}>
+          <select name="campus" className="inputTextBox" onChange={props.handelCampus}>
             {
               props.campuses.map(campus => {
                 return (
