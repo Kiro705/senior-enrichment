@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/start.js",
+    "dev": "webpack -w & nodemon server/start.js --ignore /client --ignore /public",
     "test": "mocha **/*.test.js *.test.js",
     "build": "webpack",
     "build-watch": "webpack -w",
