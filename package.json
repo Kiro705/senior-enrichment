@@ -4,7 +4,7 @@
   "description": "A review time project",
   "main": "index.js",
   "scripts": {
-    "start": "webpack -w & nodemon server/start.js --ignore /client --ignore /public",
+    "start": "node server/start.js",
     "test": "mocha **/*.test.js *.test.js",
     "build": "webpack",
     "build-watch": "webpack -w",
