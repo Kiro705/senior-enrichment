@@ -23,6 +23,7 @@ function EnrollReturn(props){
           </span>
           <input
             className="inputField"
+            autoComplete= "off"
             type="text"
             name="firstName"
             value={props.newChannelEntry}
@@ -35,6 +36,7 @@ function EnrollReturn(props){
           </span>
           <input
             className="inputField"
+            autoComplete= "off"
             type="text"
             name="lastName"
             onChange={props.handleLastName}
@@ -73,7 +75,7 @@ function mapDispatchToProps (dispatch, ownProps){
     },
     handleSubmit: function(evt){
       evt.preventDefault();
-      dispatch(postStudent({firstName: evt.target.firstName.value, lastName: evt.target.lastName.value, campusId: evt.target.campus.value}, ownProps.history))
+      dispatch(postStudent({firstName: evt.target.firstName.value, lastName: evt.target.lastName.value, campusId: Number(evt.target.campus.value)}, ownProps.history))
       dispatch(writeFirstName(''));
       dispatch(writeLastName(''));
       dispatch(writeCampusChoice(1));

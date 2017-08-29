@@ -25,9 +25,10 @@ function EditReturn(props){
           </span>
           <input
             className="inputField"
+            autoComplete= "off"
             type="text"
             name="firstName"
-            value={props.newChannelEntry}
+            defaultValue={student.firstName}
             onChange={props.handleFirstName}
           />
         </div>
@@ -36,7 +37,9 @@ function EditReturn(props){
             <h5>Last Name</h5>
           </span>
           <input
+            autoComplete= "off"
             className="inputField"
+            defaultValue={student.lastName}
             type="text"
             name="lastName"
             onChange={props.handleLastName}
@@ -49,14 +52,16 @@ function EditReturn(props){
           <select name="campus" onChange={props.handelCampus}>
             {
               props.campuses.map(campus => {
-                return (
-                  <option value={Number(campus.id)} key={campus.id} >The {campus.name} Campus</option>
-                  )
+                if (campus.id === student.campusId){
+                  return <option value={Number(campus.id)} key={campus.id} selected="selected" >The {campus.name} Campus</option>
+                } else {
+                  return <option value={Number(campus.id)} key={campus.id} >The {campus.name} Campus</option>
+                }
               })
             }
           </select>
         </div>
-        <button type="submit" id="submit">Click to Enroll</button>
+        <button type="submit" id="submit">Click to Edit</button>
       </form>
     </div>
   );
