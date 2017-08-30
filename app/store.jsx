@@ -176,5 +176,5 @@ export function editCampus (campus, history) {
       });
   }
 }  
-
+console.log("QQQQQQQQQ", process.env.NODE_ENV)
 export default createStore(rootReducer, applyMiddleware(thunkMiddleware, createLogger()))
