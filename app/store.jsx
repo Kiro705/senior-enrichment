@@ -175,6 +175,16 @@ export function editCampus (campus, history) {
         history.push(`/campuses/${targetCampus.id}`);
       });
   }
-}  
-console.log("QQQQQQQQQ", process.env.NODE_ENV)
+}
+
+// const middlewares = [];
+
+// if (process.env.NODE_ENV === `development`) {
+//   const { logger } = require(`redux-logger`);
+
+//   middlewares.push(logger);
+// }
+
+console.log('QQQQQQQQQ', process.env.ENV_VAR);
+
 export default createStore(rootReducer, applyMiddleware(thunkMiddleware, createLogger()))
