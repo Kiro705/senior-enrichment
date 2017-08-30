@@ -185,6 +185,7 @@ export function editCampus (campus, history) {
 //   middlewares.push(logger);
 // }
 
-console.log('QQQQQQQQQ', process.env.ENV_VAR);
+var isLocal = ~location.href.indexOf('://localhost');
+console.log('QQQQQQQQQ', isLocal);
 
 export default createStore(rootReducer, applyMiddleware(thunkMiddleware, createLogger()))

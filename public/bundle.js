@@ -27591,7 +27591,7 @@
 /* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -27814,10 +27814,10 @@
 	//   middlewares.push(logger);
 	// }
 	
-	console.log('QQQQQQQQQ', process.env.ENV_VAR);
+	var isLocal = ~location.href.indexOf('://localhost');
+	console.log('QQQQQQQQQ', isLocal);
 	
 	exports.default = (0, _redux.createStore)(_reducers2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default, (0, _reduxLogger2.default)()));
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
 /* 255 */
