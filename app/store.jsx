@@ -163,7 +163,7 @@ export function editStudent (student, history) {
         history.push(`/students/${targetStudent.id}`);
       });
   }
-}   
+}
 
 export function editCampus (campus, history) {
   return function thunk (dispatch) {
@@ -185,7 +185,12 @@ export function editCampus (campus, history) {
 //   middlewares.push(logger);
 // }
 
-var isLocal = ~location.href.indexOf('://localhost');
-console.log('QQQQQQQQQ', isLocal);
+const isLocal = ~location.href.indexOf('://localhost');
+const middlewareArray = [thunkMiddleware];
 
-export default createStore(rootReducer, applyMiddleware(thunkMiddleware, createLogger()))
+if (isLocal !== 0) {
+  console.log('Im Local');
+  middlewareArray.push(createLogger());
+}
+
+export default createStore(rootReducer, applyMiddleware(middlewareArray[0], middlewareArray[1]))

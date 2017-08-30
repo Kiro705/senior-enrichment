@@ -27815,9 +27815,14 @@
 	// }
 	
 	var isLocal = ~location.href.indexOf('://localhost');
-	console.log('QQQQQQQQQ', isLocal);
+	var middlewareArray = [_reduxThunk2.default];
 	
-	exports.default = (0, _redux.createStore)(_reducers2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default, (0, _reduxLogger2.default)()));
+	if (isLocal !== 0) {
+	  console.log('Im Local');
+	  middlewareArray.push((0, _reduxLogger2.default)());
+	}
+	
+	exports.default = (0, _redux.createStore)(_reducers2.default, (0, _redux.applyMiddleware)(middlewareArray[0], middlewareArray[1]));
 
 /***/ }),
 /* 255 */

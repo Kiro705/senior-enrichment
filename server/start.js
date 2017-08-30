@@ -8,8 +8,6 @@ const pkg = require('../package.json')
 
 const app = express()
 
-console.log('QQQQQQQQQ', process.env.ENV_VAR);
-
 if (process.env.NODE_ENV !== 'production') {
   // Logging middleware (non-production only)
   app.use(require('volleyball'))
