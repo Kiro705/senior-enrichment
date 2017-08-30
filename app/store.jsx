@@ -189,7 +189,6 @@ const isLocal = ~location.href.indexOf('://localhost');
 const middlewareArray = [thunkMiddleware];
 
 if (isLocal !== 0) {
-  console.log('Im Local');
   middlewareArray.push(createLogger());
 }
 

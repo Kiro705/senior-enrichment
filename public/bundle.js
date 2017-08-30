@@ -27818,7 +27818,6 @@
 	var middlewareArray = [_reduxThunk2.default];
 	
 	if (isLocal !== 0) {
-	  console.log('Im Local');
 	  middlewareArray.push((0, _reduxLogger2.default)());
 	}
 	
