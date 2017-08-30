@@ -27822,7 +27822,7 @@
 	  middlewareArray.push((0, _reduxLogger2.default)());
 	}
 	
-	exports.default = (0, _redux.createStore)(_reducers2.default, (0, _redux.applyMiddleware)(middlewareArray[0], middlewareArray[1]));
+	exports.default = (0, _redux.createStore)(_reducers2.default, _redux.applyMiddleware.apply(null, middlewareArray));
 
 /***/ }),
 /* 255 */

@@ -193,4 +193,4 @@ if (isLocal !== 0) {
   middlewareArray.push(createLogger());
 }
 
-export default createStore(rootReducer, applyMiddleware(middlewareArray[0], middlewareArray[1]))
+export default createStore(rootReducer, applyMiddleware.apply(null, middlewareArray))
