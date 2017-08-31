@@ -27806,14 +27806,6 @@
 	  };
 	}
 	
-	// const middlewares = [];
-	
-	// if (process.env.NODE_ENV === `development`) {
-	//   const { logger } = require(`redux-logger`);
-	
-	//   middlewares.push(logger);
-	// }
-	
 	var isLocal = ~location.href.indexOf('://localhost');
 	var middlewareArray = [_reduxThunk2.default];
 	
@@ -27825,17 +27817,13 @@
 
 /***/ }),
 /* 255 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.EDIT_CAMPUS = exports.EDIT_STUDENT = exports.DELETE_CAMPUS = exports.DELETE_STUDENT = exports.MAKE_STUDENT = exports.MAKE_CAMPUS = exports.WRITE_CAMPUS_URL = exports.WRITE_CAMPUS_NAME = exports.WRITE_CAMPUS_CHOICE = exports.WRITE_LASTNAME = exports.WRITE_FIRSTNAME = exports.GET_CAMPUSE_SELECTOR = exports.GET_STUDENTS = exports.GET_CAMPUSES = undefined;
-	
-	var _redux = __webpack_require__(194);
-	
 	// INITIAL STATE
 	var initialState = {
 		campuses: [],
@@ -30553,7 +30541,18 @@
 					_react2.default.createElement(
 						'h5',
 						{ className: 'navtext' },
-						'Enrolled-Students'
+						'Enrolled Students'
+					),
+					' '
+				),
+				_react2.default.createElement(
+					'a',
+					{ className: 'NavItem', href: 'https://www.youtube.com/watch?v=ksINobeCZiE&feature=youtu.be', target: '_blank' },
+					' ',
+					_react2.default.createElement(
+						'h5',
+						{ className: 'navtext' },
+						'Demo Video'
 					),
 					' '
 				)
@@ -31825,7 +31824,7 @@
 /* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -31835,35 +31834,29 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _store = __webpack_require__(254);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
-	var _reactRedux = __webpack_require__(185);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function Home() {
 	  return _react2.default.createElement(
-	    'div',
+	    "div",
 	    null,
 	    _react2.default.createElement(
-	      'ul',
-	      { className: 'list-unstyled titleDIV col-sm-12 col-xs-12' },
+	      "ul",
+	      { className: "list-unstyled titleDIV col-sm-12 col-xs-12" },
 	      _react2.default.createElement(
-	        'h1',
-	        { className: 'title' },
-	        'WELCOME'
+	        "h1",
+	        { className: "title" },
+	        "WELCOME"
 	      ),
 	      _react2.default.createElement(
-	        'h4',
-	        { className: 'title' },
-	        'TO THE'
+	        "h4",
+	        { className: "title" },
+	        "TO THE"
 	      ),
 	      _react2.default.createElement(
-	        'h1',
-	        { className: 'title' },
-	        'SPACE ACADEMY'
+	        "h1",
+	        { className: "title" },
+	        "SPACE ACADEMY"
 	      )
 	    )
 	  );

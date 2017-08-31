@@ -14,19 +14,12 @@ api.get('/campuses', function (req, res, next) {
     .catch(next);
 });
 
-//POST /api/students
+//POST /api/campuses
 api.post('/campuses', function (req, res, next) {
   Campus.create(req.body)
   .then(campus => res.json(campus))
   .catch(next);
 })
-
-// // GET /api/campuses/:campusId
-// api.get('campuses/:campusId', function (req, res, next) {
-//   Campus.findById(req.params.campusId)
-//     .then(campus => res.json(campus))
-//     .catch(next);
-// });
 
 // GET /api/students
 api.get('/students', function (req, res, next) {

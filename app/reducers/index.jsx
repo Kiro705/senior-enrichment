@@ -1,5 +1,3 @@
-import { combineReducers } from 'redux'
-
 // INITIAL STATE
 const initialState = {
 	campuses: [],
