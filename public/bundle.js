@@ -30913,7 +30913,16 @@
 	    return _react2.default.createElement(
 	      'div',
 	      null,
-	      'hi'
+	      _react2.default.createElement(
+	        'ul',
+	        { className: 'list-unstyled campusList col-sm-6 col-xs-11' },
+	        _react2.default.createElement(
+	          'h4',
+	          null,
+	          'No campus with id: ',
+	          campusId
+	        )
+	      )
 	    );
 	  }
 	}
@@ -31512,7 +31521,20 @@
 	      )
 	    );
 	  } else {
-	    return _react2.default.createElement('div', null);
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'ul',
+	        { className: 'list-unstyled campusList col-sm-6 col-xs-11' },
+	        _react2.default.createElement(
+	          'h4',
+	          null,
+	          'No student with id: ',
+	          studentId
+	        )
+	      )
+	    );
 	  }
 	}
 	

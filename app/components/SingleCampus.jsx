@@ -44,7 +44,13 @@ function SingleCampusesList(props){
       </div>
     );
   } else {
-    return (<div>hi</div>)
+    return (
+      <div>
+        <ul className="list-unstyled campusList col-sm-6 col-xs-11">
+          <h4>No campus with id: {campusId}</h4>
+        </ul>
+      </div>
+    )
   }
 }
 

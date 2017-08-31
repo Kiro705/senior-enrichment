@@ -24,7 +24,13 @@ function StudentsList(props){
       </ul>
     </div>
   );
-  } else {return <div></div>}
+  } else {
+    return (
+      <div>
+        <ul className="list-unstyled campusList col-sm-6 col-xs-11">
+          <h4>No student with id: {studentId}</h4>
+        </ul>
+      </div>)}
 }
 
 function mapDispatchToProps (dispatch, ownProps){
