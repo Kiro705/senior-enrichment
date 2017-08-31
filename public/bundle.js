@@ -31797,12 +31797,12 @@
 	        ),
 	        _react2.default.createElement(
 	          'select',
-	          { name: 'campus', className: 'inputTextBox', onChange: props.handelCampus },
+	          { name: 'campus', className: 'inputTextBox', defaultValue: Number(student.campusId), onChange: props.handelCampus },
 	          props.campuses.map(function (campus) {
 	            if (campus.id === student.campusId) {
 	              return _react2.default.createElement(
 	                'option',
-	                { value: Number(campus.id), key: campus.id, selected: 'selected' },
+	                { value: Number(campus.id), key: campus.id },
 	                'The ',
 	                campus.name,
 	                ' Campus'

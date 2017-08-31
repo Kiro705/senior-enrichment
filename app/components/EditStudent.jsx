@@ -49,11 +49,11 @@ function EditReturn(props){
           <span>
             <h5>Campus</h5>
           </span>
-          <select name="campus" className="inputTextBox" onChange={props.handelCampus}>
+          <select name="campus" className="inputTextBox" defaultValue={Number(student.campusId)}onChange={props.handelCampus}>
             {
               props.campuses.map(campus => {
                 if (campus.id === student.campusId){
-                  return <option value={Number(campus.id)} key={campus.id} selected="selected" >The {campus.name} Campus</option>
+                  return <option value={Number(campus.id)} key={campus.id} >The {campus.name} Campus</option>
                 } else {
                   return <option value={Number(campus.id)} key={campus.id} >The {campus.name} Campus</option>
                 }
