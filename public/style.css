@@ -20,6 +20,11 @@ p {
 	padding: 0;
 }
 
+.navright {
+	display: inline-flex;
+	float: right;
+}
+
 .floatCenter {
 	text-align: center;
 }

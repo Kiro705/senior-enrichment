@@ -30546,15 +30546,26 @@
 					' '
 				),
 				_react2.default.createElement(
-					'a',
-					{ className: 'NavItem', href: 'https://www.youtube.com/watch?v=ksINobeCZiE&feature=youtu.be', target: '_blank' },
-					' ',
+					'div',
+					{ className: 'navright' },
 					_react2.default.createElement(
-						'h5',
-						{ className: 'navtext' },
-						'Demo Video'
+						'a',
+						{ className: 'NavItem', href: 'https://www.youtube.com/watch?v=ksINobeCZiE&feature=youtu.be', target: '_blank' },
+						_react2.default.createElement(
+							'h5',
+							{ className: 'navtext' },
+							'Demo Video'
+						)
 					),
-					' '
+					_react2.default.createElement(
+						'a',
+						{ className: 'NavItem', href: 'https://github.com/Kiro705/senior-enrichment', target: '_blank' },
+						_react2.default.createElement(
+							'h5',
+							{ className: 'navtext' },
+							'Source Code'
+						)
+					)
 				)
 			)
 		);
