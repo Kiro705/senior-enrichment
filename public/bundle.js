@@ -31143,7 +31143,21 @@
 	    return _react2.default.createElement(
 	      'div',
 	      null,
-	      'hi'
+	      _react2.default.createElement(
+	        'ul',
+	        { className: 'list-unstyled campusList col-sm-6 col-xs-11' },
+	        _react2.default.createElement(
+	          'h4',
+	          null,
+	          'No campus with id: ',
+	          campusId
+	        ),
+	        _react2.default.createElement(
+	          'h6',
+	          null,
+	          'Did you destroy it already?'
+	        )
+	      )
 	    );
 	  }
 	}
@@ -31264,7 +31278,16 @@
 	    return _react2.default.createElement(
 	      'div',
 	      null,
-	      'heyo'
+	      _react2.default.createElement(
+	        'ul',
+	        { className: 'list-unstyled campusList col-sm-6 col-xs-11' },
+	        _react2.default.createElement(
+	          'h4',
+	          null,
+	          'No campus with id: ',
+	          campusId
+	        )
+	      )
 	    );
 	  }
 	}
@@ -31729,103 +31752,120 @@
 	  var student = props.students.filter(function (oneStudent) {
 	    return oneStudent.id === studentId;
 	  })[0];
-	  return _react2.default.createElement(
-	    'div',
-	    { className: ' campusList col-sm-6 col-11' },
-	    _react2.default.createElement(
-	      'h2',
-	      { className: 'floatCenter' },
-	      'Editing Data for: ',
-	      student.fullName
-	    ),
-	    _react2.default.createElement(
-	      'form',
-	      { id: 'enroll-form', onSubmit: props.handleSubmit },
+	  if (student) {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: ' campusList col-sm-6 col-11' },
 	      _react2.default.createElement(
-	        'div',
-	        { className: 'inputGroup' },
-	        _react2.default.createElement(
-	          'span',
-	          null,
-	          _react2.default.createElement(
-	            'h5',
-	            null,
-	            'First Name'
-	          )
-	        ),
-	        _react2.default.createElement('input', {
-	          className: 'inputField inputTextBox',
-	          autoComplete: 'off',
-	          type: 'text',
-	          name: 'firstName',
-	          defaultValue: student.firstName,
-	          onChange: props.handleFirstName
-	        })
+	        'h2',
+	        { className: 'floatCenter' },
+	        'Editing Data for: ',
+	        student.fullName
 	      ),
 	      _react2.default.createElement(
-	        'div',
-	        { className: 'inputGroup' },
+	        'form',
+	        { id: 'enroll-form', onSubmit: props.handleSubmit },
 	        _react2.default.createElement(
-	          'span',
-	          null,
+	          'div',
+	          { className: 'inputGroup' },
 	          _react2.default.createElement(
-	            'h5',
+	            'span',
 	            null,
-	            'Last Name'
-	          )
-	        ),
-	        _react2.default.createElement('input', {
-	          autoComplete: 'off',
-	          className: 'inputField inputTextBox',
-	          defaultValue: student.lastName,
-	          type: 'text',
-	          name: 'lastName',
-	          onChange: props.handleLastName
-	        })
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'inputGroup' },
-	        _react2.default.createElement(
-	          'span',
-	          null,
-	          _react2.default.createElement(
-	            'h5',
-	            null,
-	            'Campus'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'select',
-	          { name: 'campus', className: 'inputTextBox', defaultValue: Number(student.campusId), onChange: props.handelCampus },
-	          props.campuses.map(function (campus) {
-	            if (campus.id === student.campusId) {
-	              return _react2.default.createElement(
-	                'option',
-	                { value: Number(campus.id), key: campus.id },
-	                'The ',
-	                campus.name,
-	                ' Campus'
-	              );
-	            } else {
-	              return _react2.default.createElement(
-	                'option',
-	                { value: Number(campus.id), key: campus.id },
-	                'The ',
-	                campus.name,
-	                ' Campus'
-	              );
-	            }
+	            _react2.default.createElement(
+	              'h5',
+	              null,
+	              'First Name'
+	            )
+	          ),
+	          _react2.default.createElement('input', {
+	            className: 'inputField inputTextBox',
+	            autoComplete: 'off',
+	            type: 'text',
+	            name: 'firstName',
+	            defaultValue: student.firstName,
+	            onChange: props.handleFirstName
 	          })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'inputGroup' },
+	          _react2.default.createElement(
+	            'span',
+	            null,
+	            _react2.default.createElement(
+	              'h5',
+	              null,
+	              'Last Name'
+	            )
+	          ),
+	          _react2.default.createElement('input', {
+	            autoComplete: 'off',
+	            className: 'inputField inputTextBox',
+	            defaultValue: student.lastName,
+	            type: 'text',
+	            name: 'lastName',
+	            onChange: props.handleLastName
+	          })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'inputGroup' },
+	          _react2.default.createElement(
+	            'span',
+	            null,
+	            _react2.default.createElement(
+	              'h5',
+	              null,
+	              'Campus'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'select',
+	            { name: 'campus', className: 'inputTextBox', defaultValue: Number(student.campusId), onChange: props.handelCampus },
+	            props.campuses.map(function (campus) {
+	              if (campus.id === student.campusId) {
+	                return _react2.default.createElement(
+	                  'option',
+	                  { value: Number(campus.id), key: campus.id },
+	                  'The ',
+	                  campus.name,
+	                  ' Campus'
+	                );
+	              } else {
+	                return _react2.default.createElement(
+	                  'option',
+	                  { value: Number(campus.id), key: campus.id },
+	                  'The ',
+	                  campus.name,
+	                  ' Campus'
+	                );
+	              }
+	            })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { type: 'submit', id: 'submit' },
+	          'Click to Edit'
 	        )
-	      ),
-	      _react2.default.createElement(
-	        'button',
-	        { type: 'submit', id: 'submit' },
-	        'Click to Edit'
 	      )
-	    )
-	  );
+	    );
+	  } else {
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'ul',
+	        { className: 'list-unstyled campusList col-sm-6 col-xs-11' },
+	        _react2.default.createElement(
+	          'h4',
+	          null,
+	          'No student with id: ',
+	          studentId
+	        )
+	      )
+	    );
+	  }
 	}
 	
 	function mapDispatchToProps(dispatch, ownProps) {

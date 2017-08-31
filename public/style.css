@@ -1,5 +1,6 @@
 html {
 	background-image: url("https://i.ytimg.com/vi/aiU22lKiZbA/maxresdefault.jpg");
+	background-size: 100%;
 	width: 100vw;
 	height: 100vh;
 }
@@ -96,6 +97,7 @@ p {
 	color: white;
 	text-align: center;
 	background-image: url(https://media4.s-nbcnews.com/j/newscms/2014_16/330011/140417-coslog-kepler_f8c4ec47f1cce1f760385f2e547af202.nbcnews-fp-1240-520.jpg);
+	background-size: 100%
 }
 
 .enrollButton {

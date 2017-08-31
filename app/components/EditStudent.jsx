@@ -15,7 +15,8 @@ const mapStateToProps = function(state) {
 function EditReturn(props){
 	const studentId = Number(props.match.params.studentId);
 	const student = props.students.filter(oneStudent => oneStudent.id === studentId)[0];
-  return (
+  if(student) {
+    return (
     <div className=" campusList col-sm-6 col-11">
       <h2 className="floatCenter">Editing Data for: {student.fullName}</h2>
       <form id="enroll-form" onSubmit={props.handleSubmit}>
@@ -64,7 +65,14 @@ function EditReturn(props){
         <button type="submit" id="submit">Click to Edit</button>
       </form>
     </div>
-  );
+    );
+  } else {
+    return (<div>
+        <ul className="list-unstyled campusList col-sm-6 col-xs-11">
+          <h4>No student with id: {studentId}</h4>
+        </ul>
+      </div>)
+  }
 }
 
 function mapDispatchToProps (dispatch, ownProps){
